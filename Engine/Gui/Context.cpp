@@ -3,7 +3,6 @@
 #include <Engine/Window.hpp>
 #include <imgui/backends/imgui_impl_glfw.h>
 #include <imgui/backends/imgui_impl_opengl3.h>
-#include <imgui/imgui.h>
 
 namespace Engine::Gui
 {
@@ -24,14 +23,14 @@ namespace Engine::Gui
         ImGui::DestroyContext();
     }
 
-    void Context::on_render()
-    {
+    void Context::on_update() {
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
+    }
 
-        ImGui::ShowDemoWindow();
-
+    void Context::on_render()
+    {
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }

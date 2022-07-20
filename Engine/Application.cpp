@@ -20,7 +20,12 @@ namespace Engine
         while (!m_window->should_close())
         {
             m_graphics->on_render();
+
+            m_gui->on_update();
+            for (const auto &layer : m_layers)
+                layer->on_gui();
             m_gui->on_render();
+
             m_window->on_render();
         }
 
@@ -31,4 +36,6 @@ namespace Engine
     }
 
     void Application::on_event(Event &event) { m_graphics->on_event(event); }
+
+    void Application::add_layer(std::unique_ptr<Layer> layer) { m_layers.emplace_back(std::move(layer)); }
 } // namespace Engine
