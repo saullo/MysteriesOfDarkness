@@ -11,6 +11,9 @@ namespace Engine::Gui
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
 
+        auto &io = ImGui::GetIO();
+        io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+
         auto window_instance = Window::instance();
         ImGui_ImplGlfw_InitForOpenGL(window_instance->native(), true);
         ImGui_ImplOpenGL3_Init(Graphics::Context::glsl_version);
@@ -23,7 +26,8 @@ namespace Engine::Gui
         ImGui::DestroyContext();
     }
 
-    void Context::on_update() {
+    void Context::on_update()
+    {
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
