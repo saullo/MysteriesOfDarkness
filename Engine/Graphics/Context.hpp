@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Engine/Event.hpp>
 #include <glad/glad.h>
 
 namespace Engine::Graphics
@@ -13,5 +14,9 @@ namespace Engine::Graphics
 
         void on_init();
         void on_render();
+        void on_event(Event &event);
+
+    private:
+        void on_framebuffer_size(FramebufferSizeEvent &event);
     };
 } // namespace Engine::Graphics

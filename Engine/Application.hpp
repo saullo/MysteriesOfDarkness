@@ -18,5 +18,7 @@ namespace Engine
         std::unique_ptr<Window> m_window;
         std::unique_ptr<Graphics::Context> m_graphics;
         std::unique_ptr<Gui::Context> m_gui;
+ 
+        void on_event(Event &event);
     };
 } // namespace Engine

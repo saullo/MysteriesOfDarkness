@@ -5,6 +5,8 @@ namespace Engine
     Application::Application()
     {
         m_window = std::make_unique<Window>();
+        m_window->set_event_handler(EVENT_HANDLER(on_event));
+
         m_graphics = std::make_unique<Graphics::Context>();
         m_gui = std::make_unique<Gui::Context>();
     }
@@ -27,4 +29,6 @@ namespace Engine
 
         return EXIT_SUCCESS;
     }
+
+    void Application::on_event(Event &event) { m_graphics->on_event(event); }
 } // namespace Engine

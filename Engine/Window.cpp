@@ -24,6 +24,14 @@ namespace Engine
 
         glfwMakeContextCurrent(m_window);
         glfwSwapInterval(GLFW_TRUE);
+        glfwSetWindowUserPointer(m_window, this);
+
+        glfwSetFramebufferSizeCallback(m_window, [](auto window, auto width, auto height) {
+            auto window_class = reinterpret_cast<Window *>(glfwGetWindowUserPointer(window));
+
+            FramebufferSizeEvent event(width, height);
+            window_class->m_event_handler(event);
+        });
     }
 
     void Window::on_shutdown() { glfwTerminate(); }

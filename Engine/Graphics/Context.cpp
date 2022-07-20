@@ -15,4 +15,14 @@ namespace Engine::Graphics
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
     }
+
+    void Context::on_event(Event &event)
+    {
+        EventCaller caller(event);
+        caller.call<FramebufferSizeEvent>(EVENT_HANDLER(on_framebuffer_size));
+    }
+
+    void Context::on_framebuffer_size(FramebufferSizeEvent &event) {
+        glViewport(0, 0, event.width(), event.height());
+    }
 } // namespace Engine::Graphics
