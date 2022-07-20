@@ -4,3 +4,7 @@
 [submodule "Vendors/glad"]
 	path = Vendors/glad
 	url = https://github.com/Dav1dde/glad.git
+[submodule "Vendors/imgui"]
+	path = Vendors/imgui
+	url = https://github.com/ocornut/imgui.git
+	branch = docking
