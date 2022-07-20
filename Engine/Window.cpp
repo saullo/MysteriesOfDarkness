@@ -17,8 +17,9 @@ namespace Engine
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, Graphics::Context::minor_version);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+        glfwWindowHint(GLFW_MAXIMIZED, m_maximized);
 
-        m_window = glfwCreateWindow(1024, 768, "Mysteries Of Darkness", nullptr, nullptr);
+        m_window = glfwCreateWindow(m_width, m_height, "Mysteries Of Darkness", nullptr, nullptr);
         if (!m_window)
             throw std::runtime_error("Unable to create GLFW window");
 
