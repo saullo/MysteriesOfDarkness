@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Engine/Graphics/Context.hpp>
 #include <Engine/Window.hpp>
 #include <memory>
 
@@ -14,5 +15,6 @@ namespace Engine
 
     private:
         std::unique_ptr<Window> m_window;
+        std::unique_ptr<Graphics::Context> m_graphics;
     };
 } // namespace Engine
