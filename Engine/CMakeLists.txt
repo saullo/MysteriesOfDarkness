@@ -9,4 +9,4 @@ set(SOURCES
         Utils/Ini.cpp)
 
 add_library(Engine ${SOURCES})
-target_link_libraries(Engine imgui glad)
+target_link_libraries(Engine imgui)

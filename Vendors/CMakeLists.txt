@@ -13,4 +13,4 @@ set(IMGUI_SOURCES
 
 add_library(imgui ${IMGUI_SOURCES})
 target_include_directories(imgui PUBLIC imgui)
-target_link_libraries(imgui glfw)
+target_link_libraries(imgui glfw glad)
