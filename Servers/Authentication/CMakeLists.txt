@@ -1,5 +1,5 @@
 set(SOURCES
         Main.cpp)
 
-add_executable(ClientServer ${SOURCES})
-target_link_libraries(ClientServer Engine)
+add_executable(AuthenticationServer ${SOURCES})
+target_link_libraries(AuthenticationServer Engine)
