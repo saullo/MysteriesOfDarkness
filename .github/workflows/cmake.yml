@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
+        os: [ ubuntu-latest, windows-latest ]
         arch: [ x86, x64 ]
 
     steps:
@@ -17,31 +17,13 @@ jobs:
           submodules: 'recursive'
 
       - name: Install dependencies
+        if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt update
           sudo apt install ninja-build libgl1-mesa-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libxext-dev
 
       - name: Configure
-        run: cmake --preset ${{ matrix.arch }}-release
+        run: cmake --preset ${{ matrix.arch }}-release-${{ runner.os }}
 
       - name: Build
-        run: cmake --build --preset ${{ matrix.arch }}-release --config Release
-
-  build-windows:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ windows-latest ]
-        arch: [ x86, x64 ]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          submodules: 'recursive'
-
-      - name: Configure
-        run: cmake --preset ${{ matrix.arch }}-release
-
-      - name: Build
-        run: cmake --build --preset ${{ matrix.arch }}-release --config Release
+        run: cmake --build --preset ${{ matrix.arch }}-release-${{ runner.os }} --config Release
