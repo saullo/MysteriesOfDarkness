@@ -2,6 +2,8 @@
 
 Mysteries Of Darkness is a massively multiplayer online role-playing game written in C++ from scratch.
 
+[![Build](https://github.com/saullo/MysteriesOfDarkness/actions/workflows/cmake.yml/badge.svg)](https://github.com/saullo/MysteriesOfDarkness/actions/workflows/cmake.yml)
+
 ![Screenshot](https://github.com/saullo/MysteriesOfDarkness/blob/main/Meta/Images/Screenshot-2022-07-27-235417.png?raw=true)
 *The Game Editor*
 
