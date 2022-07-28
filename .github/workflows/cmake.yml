@@ -26,3 +26,22 @@ jobs:
 
       - name: Build
         run: cmake --build --preset ${{ matrix.arch }}-release --config Release
+
+  build-windows:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ windows-latest ]
+        arch: [ x86, x64 ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+
+      - name: Configure
+        run: cmake --preset ${{ matrix.arch }}-release
+
+      - name: Build
+        run: cmake --build --preset ${{ matrix.arch }}-release --config Release
