@@ -1,0 +1,26 @@
+name: CMake
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [windows-latest]
+        build_type: [Debug, Release]
+        architecture: [x86, x64]
+
+    env:
+      PRESET_NAME: ${{ RUNNER_OS }}-${{ matrix.architecture }}-${{ matrix.build_type }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Configure CMake
+      run: cmake --preset ${{ PRESET_NAME }}
+
+    - name: Build
+      run: cmake --build --preset ${{ PRESET_NAME }} --config ${{ matrix.build_type }}
