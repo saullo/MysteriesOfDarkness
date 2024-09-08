@@ -13,14 +13,11 @@ jobs:
         build_type: [Debug, Release]
         architecture: [x86, x64]
 
-    env:
-      PRESET_NAME: ${{ runner.os }}-${{ matrix.architecture }}-${{ matrix.build_type }}
-
     steps:
     - uses: actions/checkout@v4
 
     - name: Configure CMake
-      run: cmake --preset ${{ PRESET_NAME }}
+      run: cmake --preset ${{ runner.os }}-${{ matrix.architecture }}-${{ matrix.build_type }}
 
     - name: Build
-      run: cmake --build --preset ${{ PRESET_NAME }} --config ${{ matrix.build_type }}
+      run: cmake --build --preset ${{ runner.os }}-${{ matrix.architecture }}-${{ matrix.build_type }} --config ${{ matrix.build_type }}
