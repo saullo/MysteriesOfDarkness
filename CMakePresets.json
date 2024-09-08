@@ -1,0 +1,76 @@
+{
+  //"$schema": "https://cmake.org/cmake/help/latest/_downloads/3e2d73bff478d88a7de0de736ba5e361/schema.json",
+  "version": 8,
+  "configurePresets": [
+    {
+      "name": "Windows-Base",
+      "hidden": true,
+      "generator": "Visual Studio 17 2022",
+      "binaryDir": "${sourceDir}/Binary/Build/${presetName}",
+      "installDir": "${sourceDir}/Binary/Install/${presetName}",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "Windows-x86-Debug",
+      "inherits": "Windows-Base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CONFIGURATION_TYPES": "Debug"
+      },
+      "architecture": {
+        "strategy": "set",
+        "value": "Win32"
+      }
+    },
+    {
+      "name": "Windows-x86-Release",
+      "inherits": "Windows-x86-Debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CONFIGURATION_TYPES": "Release"
+      }
+    },
+    {
+      "name": "Windows-x64-Debug",
+      "inherits": "Windows-Base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CONFIGURATION_TYPES": "Debug"
+      },
+      "architecture": {
+        "strategy": "set",
+        "value": "x64"
+      }
+    },
+    {
+      "name": "Windows-x64-Release",
+      "inherits": "Windows-x64-Debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CONFIGURATION_TYPES": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "Windows-x86-Debug",
+      "configurePreset": "Windows-x86-Debug"
+    },
+    {
+      "name": "Windows-x86-Release",
+      "configurePreset": "Windows-x86-Release"
+    },
+    {
+      "name": "Windows-x64-Debug",
+      "configurePreset": "Windows-x64-Debug"
+    },
+    {
+      "name": "Windows-x64-Release",
+      "configurePreset": "Windows-x64-Release"
+    }
+  ]
+}
