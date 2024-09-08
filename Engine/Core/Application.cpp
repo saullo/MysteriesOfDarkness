@@ -39,7 +39,10 @@ namespace Engine::Core
 
     void Application::loop()
     {
-        m_window->show();
+        if (is_windowed())
+        {
+            m_window->show();
+        }
 
         while (!m_should_close)
         {

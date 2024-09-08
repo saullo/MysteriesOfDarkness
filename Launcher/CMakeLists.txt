@@ -1,4 +1,4 @@
 set(SOURCES
 	Main.cpp)
 
-window_binary(Launcher)
+app_binary(Launcher)

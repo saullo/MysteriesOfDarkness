@@ -44,12 +44,17 @@ namespace Engine::Core
 } // namespace Engine::Core
 
 #if PLATFORM_IS_WINDOWS
-#define APPLICATION_ENTRYPOINT()                                                                                       \
+
+#define APPLICATION_ENTRYPOINT(type)                                                                                   \
     int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ PWSTR pCmdLine,               \
                         _In_ int nCmdShow)                                                                             \
     {                                                                                                                  \
         auto &application = Engine::Core::Application::instance();                                                     \
-        application.set_type(Engine::Core::Application::Type::window);                                                 \
+        application.set_type(type);                                                                                    \
         return application.run();                                                                                      \
     }
+
+#define WINDOW_APPLICATION_ENTRYPOINT() APPLICATION_ENTRYPOINT(Engine::Core::Application::Type::window)
+#define CONSOLE_APPLICATION_ENTRYPOINT() APPLICATION_ENTRYPOINT(Engine::Core::Application::Type::console)
+
 #endif

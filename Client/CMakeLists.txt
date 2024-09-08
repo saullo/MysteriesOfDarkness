@@ -1,4 +1,4 @@
 set(SOURCES
 	Main.cpp)
 
-window_binary(Client)
+app_binary(Client)

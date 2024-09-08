@@ -1,3 +1,3 @@
 #include <Engine/Core/Application.hpp>
 
-WINDOW_APPLICATION_ENTRYPOINT()
+CONSOLE_APPLICATION_ENTRYPOINT()

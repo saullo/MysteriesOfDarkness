@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(.)
 
-function(window_binary bin_name)
+function(app_binary bin_name)
 	add_executable(${bin_name} ${SOURCES})
 	target_link_libraries(${bin_name} PRIVATE Engine)
 
@@ -21,3 +21,4 @@ endfunction()
 add_subdirectory(Engine)
 add_subdirectory(Launcher)
 add_subdirectory(Client)
+add_subdirectory(Servers)
